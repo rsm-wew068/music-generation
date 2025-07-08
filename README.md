@@ -1,6 +1,6 @@
-# 🎼 Symbolic Music Generation – CSE 258 Project
+# 🎼 Symbolic Music Generation – CSE 253 Project
 
-This repository contains experiments in symbolic music generation using deep learning and probabilistic models, developed for the Machine Learning for Music course (CSE 258, Spring 2025).
+This repository contains experiments in symbolic music generation using deep learning and probabilistic models, developed for the Machine Learning for Music course (CSE 253, Spring 2025).
 
 ---
 
