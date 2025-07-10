@@ -206,13 +206,13 @@ The course covers fundamental audio signal processing, machine learning for musi
 
 ## 📊 Performance Summary
 
-| Assignment | Task | Performance | Status |
-|------------|------|-------------|---------|
-| Assignment 1 | Composer Classification | ~57% accuracy | ⚠️ Below target (70%) |
-| Assignment 1 | Sequence Prediction | ~85% accuracy | ✅ Successful |
-| Assignment 1 | Audio Classification | ~30-35% mAP | ✅ Improved over baseline |
-| Final Project | Conditioned Generation | Structured output | ✅ Complete |
-| Final Project | Unconditioned Generation | Basic output | ✅ Complete |
+| Assignment | Task | My Performance | Baseline | Improvement | Status |
+|------------|------|----------------|----------|-------------|---------|
+| Assignment 1 | Composer Classification | ~57% accuracy | ~45% accuracy | +12% | ⚠️ Below target (70%) |
+| Assignment 1 | Sequence Prediction | ~85% accuracy | ~70% accuracy | +15% | ✅ Successful |
+| Assignment 1 | Audio Classification | ~30-35% mAP | ~27% mAP | +3-8% | ✅ Improved over baseline |
+| Final Project | Conditioned Generation | Structured output | Basic output | Significant | ✅ Complete |
+| Final Project | Unconditioned Generation | Basic output | Random output | Significant | ✅ Complete |
 
 ## 🎵 Key Insights
 

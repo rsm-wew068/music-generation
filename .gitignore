@@ -1,0 +1,60 @@
+# Large data files
+*.zip
+*.wav
+*.mp3
+*.flac
+*.aiff
+*.m4a
+
+# Large JSON data files
+*_playlists.json
+*_data.json
+*_dataset.json
+
+# Audio embeddings and models
+*_embeddings.*
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+
+# MIDI files (keep only the generated samples)
+midi/
+*.mid
+*.midi
+!assignment2/symbolic_conditioned.mid
+!assignment2/symbolic_unconditioned.mid
+
+# Reference audio files
+references/
+samples/
+
+# Git objects (if any nested repos)
+.git/objects/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment files
+.env
+.venv
+env/
+venv/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db homework4/sat-253/
