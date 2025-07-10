@@ -174,7 +174,7 @@ The course covers fundamental audio signal processing, machine learning for musi
 - **PrettyMIDI**: MIDI file processing
 - **FluidSynth**: MIDI to audio conversion
 
-## 👩🏻‍💻 My Contributions
+#### 👩🏻‍💻 My Contributions
 
 The final project was a 4-person team effort; I led the symbolic conditioned generation and Transformer modeling.
 
