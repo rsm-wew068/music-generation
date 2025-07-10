@@ -1,76 +1,237 @@
-# 🎼 Symbolic Music Generation – CSE 253 Project
+# CSE253 Machine Learning for Music
 
-This repository contains experiments in symbolic music generation using deep learning and probabilistic models, developed for the Machine Learning for Music course (CSE 253, Spring 2025).
+The course covers fundamental audio signal processing, machine learning for music analysis, and advanced music generation techniques.
 
----
+## 🎵 Sample Outputs
 
-## 📌 Project Overview
+**Listen to generated music from the final project:**
+- [🎼 Conditioned Generation (Structured)](./final_project/symbolic_conditioned.mid) - Multi-instrument folk music with intro/climax/resolution
+- [🎹 Unconditioned Generation (Basic)](./final_project/symbolic_unconditioned.mid) - Melody and chord progression generation
 
-We explored two generation pipelines:
+*Note: MIDI files can be played with any MIDI-compatible software or converted to audio using tools like FluidSynth*
 
-### 1. **Unconditioned Generation**  
-Symbolic melody and chord generation from scratch:
-- **Chord Modeling:** 2nd-order Markov Chain
-- **Melody Modeling:** LSTM-based RNN
-- **Dataset:** MAESTRO 2018 (MIDI)
+## 👨‍💻 My Contributions
 
-### 2. **Conditioned Generation**  
-Structured generation conditioned on melody, chord, and bass lines:
-- **Tokenizer:** REMI tokenization
-- **Model:** MiniTransformer (decoder-only)
-- **Feature Modeling:** MLP regressors for duration, velocity, and tempo
-- **Dataset:** Nottingham Folk Dataset (ABC notation → MIDI)
+**Team Project**: The final project was a 4-person team effort; I led the symbolic conditioned generation and Transformer modeling.
 
----
+## 📚 Course Structure
 
-## ⚙️ Key Features
+### **Homework Assignments** (Fundamentals)
 
-### 🔹 symbolic_unconditioned.ipynb
-- MIDI parsing, chord estimation, melody extraction
-- Sequence generation with:
-  - Markov Chain for chord progression
-  - LSTM RNN for melody (PyTorch)
-- Combined generation into new MIDI files
-- Visualization of note/chord distributions
+#### **Homework 1: Audio Signal Processing & MIDI Classification**
+**Location:** `homework1/homework1_stub.ipynb`
 
-### 🔹 symbolic_conditioned.ipynb
-- ABC-to-MIDI pipeline and data augmentation
-- REMI token construction and vocabulary
-- Transformer model trained to predict symbolic tokens
-- Feature-based expressive decoding (duration, velocity, tempo)
-- Structured section control: intro → climax → resolution
-- Audio rendering with FluidSynth
+**Topics Covered:**
+- **Audio Signal Processing Fundamentals**
+  - Note-to-frequency conversion (A4=440Hz reference)
+  - Audio effects: fade-out, delay, mixing, concatenation
+  - Waveform generation: sawtooth waves using harmonic summation
+- **MIDI Binary Classification**
+  - Feature extraction from MIDI files
+  - Machine learning classification techniques
+  - Audio signal analysis and processing
+
+**Technologies:** NumPy, SciPy, librosa, MIDI processing libraries
 
 ---
 
-## 🎯 Objective
+#### **Homework 2: Audio Feature Extraction & Analysis**
+**Location:** `homework2/homework2_stub.ipynb`
 
-Can we build musically coherent, structured compositions using symbolic models and small datasets?  
-We aim to balance interpretability and musical quality with efficient, modular architectures.
+**Topics Covered:**
+- **Audio Feature Engineering**
+  - Mel-frequency cepstral coefficients (MFCCs)
+  - Spectral features and audio analysis
+  - Feature extraction pipelines
+- **Audio Classification**
+  - Machine learning models for audio classification
+  - Feature-based audio analysis
 
----
-
-## 🛠️ Requirements
-
-- Python 3.x
-- Jupyter Notebook
-- PyTorch, scikit-learn, music21, pretty_midi, numpy, matplotlib
-- Audio rendering: `fluidsynth`, `FluidR3_GM.sf2`
-
----
-
-## ▶️ Usage
-
-1. Clone this repo.
-2. Open either notebook:
-   - `symbolic_unconditioned.ipynb` for MAESTRO-based generation
-   - `symbolic_conditioned.ipynb` for REMI-tokenized Nottingham modeling
-3. Follow the steps to install dependencies and run the code.
-4. MIDI/audio output will be saved to the working directory.
+**Technologies:** librosa, scikit-learn, audio processing libraries
 
 ---
 
-## ✍️ Authors
+#### **Homework 3: Symbolic Music Generation with Markov Chains**
+**Location:** `homework3/homework3_stub.ipynb`
 
-Rachel Wang, Juhak Lee, Slater Mutunga, Vincent Tu  
-Contributions: data processing, model training, symbolic generation, evaluation, visualization
+**Topics Covered:**
+- **Markov Chain Music Generation**
+  - Probability-based sequence generation
+  - Musical pattern learning
+  - Symbolic music representation
+- **REMI Tokenization**
+  - MIDI tokenization using REMI method
+  - Position, Pitch, Velocity, Duration tokens
+  - Structured music representation
+
+**Technologies:** miditok, Markov chains, probability theory
+
+---
+
+#### **Homework 4: Diffusion Models for Audio Generation**
+**Location:** `homework4/sat-253/homework4_stub.ipynb`
+
+**Topics Covered:**
+- **Diffusion Models**
+  - Stable Audio Tools (SAT) framework
+  - Audio generation using diffusion processes
+  - Conditional audio generation
+- **Advanced Audio Generation**
+  - Neural audio synthesis
+  - Diffusion-based music creation
+
+**Technologies:** Stable Audio Tools, PyTorch, diffusion models
+
+---
+
+#### **Homework 5: Advanced Music Generation**
+**Location:** `homework5/homework5 stub.ipynb`
+
+**Topics Covered:**
+- **Advanced Music Generation Techniques**
+  - Neural music synthesis
+  - Complex music generation pipelines
+  - State-of-the-art music AI models
+
+**Technologies:** Advanced ML frameworks, music generation libraries
+
+---
+
+### **Major Projects**
+
+#### **Assignment 1: Music Machine Learning Tasks**
+**Location:** `assignment1/`
+
+**Three Core Tasks:**
+
+1. **Task 1: Composer Classification** (`task1_composer_classification/`)
+   - **Goal**: Classify classical composers from MIDI files
+   - **Approach**: XGBoost/LightGBM with MIDI feature extraction
+   - **Features**: Pitch/duration/velocity stats, interval bigrams, chord roots
+   - **Performance**: ~57% accuracy (target: 70%)
+   - **Challenge**: Distribution shift between train/test sets
+
+2. **Task 2: Next Sequence Prediction** (`task2_next_sequence_prediction/`)
+   - **Goal**: Predict whether one MIDI segment follows another
+   - **Approach**: MLPClassifier and XGBoost with feature engineering
+   - **Features**: MIDI statistics, pitch overlap, key/tempo matching
+   - **Performance**: ~85% accuracy (successful)
+   - **Success**: Robust cross-validation and feature engineering
+
+3. **Task 3: Music Tagging (Audio)** (`task3_audio_classification/`)
+   - **Goal**: Multi-label genre classification from audio files
+   - **Approach**: 3-layer CNN with mel-spectrograms
+   - **Features**: MelSpectrogram + AmplitudeToDB via torchaudio
+   - **Performance**: ~30-35% mAP (improved over baseline)
+   - **Challenge**: Limited model capacity vs. test distribution
+
+**Key Files:**
+- `assignment1.py`: Main implementation with three model classes
+- `baseline.py`: Baseline implementations for comparison
+- `writeup.txt`: Comprehensive analysis and lessons learned
+- `predictions*.json`: Generated predictions for each task
+
+**Technologies:** PyTorch, XGBoost, LightGBM, torchaudio, music21, scikit-learn
+
+---
+
+#### **Final Project: Symbolic Music Generation**
+**Location:** `final_project/`
+
+**Two Main Tasks:**
+
+1. **Task 1: Conditioned Symbolic Generation** (`symbolic_conditioned.ipynb`)
+   - **Dataset**: Nottingham ABC folk music dataset
+   - **Approach**: REMI tokenization with Transformer architecture
+   - **Features**:
+     - Multi-instrument modeling (Melody, Chords, Bass)
+     - REMI tokenization: Bar, Position, Track, Note/Chord tokens
+     - Data augmentation via transposition
+     - Expressive generation (duration, velocity, articulation)
+     - Structured composition: Intro → Climax → Resolution
+     - 1-minute generation with musical structure
+   - **Output**: `symbolic_conditioned.mid`
+
+2. **Task 2: Unconditioned Symbolic Generation** (`symbolic_unconditioned.ipynb`)
+   - **Dataset**: MIDI files from various sources
+   - **Approach**: Traditional ML with chord progression and melody extraction
+   - **Features**:
+     - Chord estimation from pitch classes
+     - Melody extraction (highest pitch per time segment)
+     - RNN/LSTM-based sequence generation
+     - Time-step analysis (1-second segments)
+   - **Output**: `symbolic_unconditioned.mid`
+
+**Key Technologies:**
+- **Music21**: Music analysis and processing
+- **PyTorch**: Deep learning framework
+- **Transformers**: Attention-based models
+- **REMI Tokenization**: Structured MIDI representation
+- **PrettyMIDI**: MIDI file processing
+- **FluidSynth**: MIDI to audio conversion
+
+---
+
+## 🎯 Learning Progression
+
+### **Fundamentals → Advanced**
+1. **Homework 1-2**: Audio signal processing basics
+2. **Homework 3**: Symbolic music generation fundamentals
+3. **Homework 4-5**: Advanced AI music generation
+4. **Assignment 1**: Applied ML for music analysis
+5. **Final Project**: End-to-end music generation systems
+
+### **Skills Developed**
+- **Audio Processing**: Signal analysis, feature extraction, effects
+- **Machine Learning**: Classification, regression, sequence modeling
+- **Music Theory**: MIDI processing, chord analysis, musical structure
+- **Deep Learning**: CNNs, RNNs, Transformers for music
+- **AI Generation**: Diffusion models, neural synthesis, symbolic generation
+
+## 🛠️ Technology Stack
+
+### **Core Libraries**
+- **PyTorch**: Deep learning framework
+- **librosa**: Audio processing and analysis
+- **music21**: Music theory and analysis
+- **scikit-learn**: Machine learning algorithms
+- **numpy/scipy**: Numerical computing
+- **torchaudio**: Audio processing for PyTorch
+
+### **Specialized Tools**
+- **miditok**: MIDI tokenization (REMI)
+- **pretty_midi**: MIDI file processing
+- **Stable Audio Tools**: Diffusion-based audio generation
+- **FluidSynth**: MIDI to audio conversion
+
+## 📊 Performance Summary
+
+| Assignment | Task | Performance | Status |
+|------------|------|-------------|---------|
+| Assignment 1 | Composer Classification | ~57% accuracy | ⚠️ Below target (70%) |
+| Assignment 1 | Sequence Prediction | ~85% accuracy | ✅ Successful |
+| Assignment 1 | Audio Classification | ~30-35% mAP | ✅ Improved over baseline |
+| Final Project | Conditioned Generation | Structured output | ✅ Complete |
+| Final Project | Unconditioned Generation | Basic output | ✅ Complete |
+
+## 🎵 Key Insights
+
+### **Assignment 1 Lessons**
+- **Feature engineering** is crucial for symbolic music tasks
+- **Distribution shift** between train/test sets is a major challenge
+- **Classical ML** (XGBoost) can outperform deep learning for structured data
+- **Cross-validation** is essential for robust evaluation
+
+### **Final Project Lessons**
+- **REMI tokenization** provides excellent structure for music generation
+- **Multi-instrument modeling** creates more realistic compositions
+- **Expressive control** (duration, velocity, articulation) enhances quality
+- **Structured generation** (intro/climax/resolution) improves musical coherence
+
+## 📝 Notes
+
+- **Assignment 1** focuses on **music analysis and classification**
+- **Final Project** focuses on **music generation and composition**
+- **Homework series** provides foundational knowledge
+
+This repository represents a complete journey through modern music AI, from basic audio processing to advanced generative systems.
