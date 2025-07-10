@@ -10,10 +10,6 @@ The course covers fundamental audio signal processing, machine learning for musi
 
 *Note: MIDI files can be played with any MIDI-compatible software or converted to audio using tools like FluidSynth*
 
-## 👨‍💻 My Contributions
-
-**Team Project**: The final project was a 4-person team effort; I led the symbolic conditioned generation and Transformer modeling.
-
 ## 📚 Course Structure
 
 ### **Homework Assignments** (Fundamentals)
@@ -31,6 +27,7 @@ The course covers fundamental audio signal processing, machine learning for musi
   - Machine learning classification techniques
   - Audio signal analysis and processing
 
+**Dataset:** Custom MIDI files for binary classification task
 **Technologies:** NumPy, SciPy, librosa, MIDI processing libraries
 
 ---
@@ -47,6 +44,7 @@ The course covers fundamental audio signal processing, machine learning for musi
   - Machine learning models for audio classification
   - Feature-based audio analysis
 
+**Dataset:** Audio files with extracted MFCC features for classification
 **Technologies:** librosa, scikit-learn, audio processing libraries
 
 ---
@@ -64,6 +62,7 @@ The course covers fundamental audio signal processing, machine learning for musi
   - Position, Pitch, Velocity, Duration tokens
   - Structured music representation
 
+**Dataset:** MIDI files for training Markov chain transition probabilities
 **Technologies:** miditok, Markov chains, probability theory
 
 ---
@@ -80,6 +79,7 @@ The course covers fundamental audio signal processing, machine learning for musi
   - Neural audio synthesis
   - Diffusion-based music creation
 
+**Dataset:** Audio samples for training diffusion models (Stable Audio Tools framework)
 **Technologies:** Stable Audio Tools, PyTorch, diffusion models
 
 ---
@@ -93,6 +93,7 @@ The course covers fundamental audio signal processing, machine learning for musi
   - Complex music generation pipelines
   - State-of-the-art music AI models
 
+**Dataset:** Audio embeddings and playlist data for advanced generation tasks
 **Technologies:** Advanced ML frameworks, music generation libraries
 
 ---
@@ -106,6 +107,7 @@ The course covers fundamental audio signal processing, machine learning for musi
 
 1. **Task 1: Composer Classification** (`task1_composer_classification/`)
    - **Goal**: Classify classical composers from MIDI files
+   - **Dataset**: MIDI files from 8 classical composers (Beethoven, Chopin, Bach, Liszt, Schubert, Haydn, Mozart, Schumann)
    - **Approach**: XGBoost/LightGBM with MIDI feature extraction
    - **Features**: Pitch/duration/velocity stats, interval bigrams, chord roots
    - **Performance**: ~57% accuracy (target: 70%)
@@ -113,6 +115,7 @@ The course covers fundamental audio signal processing, machine learning for musi
 
 2. **Task 2: Next Sequence Prediction** (`task2_next_sequence_prediction/`)
    - **Goal**: Predict whether one MIDI segment follows another
+   - **Dataset**: MIDI sequence pairs for training/testing sequence relationships
    - **Approach**: MLPClassifier and XGBoost with feature engineering
    - **Features**: MIDI statistics, pitch overlap, key/tempo matching
    - **Performance**: ~85% accuracy (successful)
@@ -120,6 +123,7 @@ The course covers fundamental audio signal processing, machine learning for musi
 
 3. **Task 3: Music Tagging (Audio)** (`task3_audio_classification/`)
    - **Goal**: Multi-label genre classification from audio files
+   - **Dataset**: Audio files with 10 genre tags (rock, jazz, pop, electronic, country, blues, oldies, dance, punk, chill)
    - **Approach**: 3-layer CNN with mel-spectrograms
    - **Features**: MelSpectrogram + AmplitudeToDB via torchaudio
    - **Performance**: ~30-35% mAP (improved over baseline)
@@ -141,7 +145,7 @@ The course covers fundamental audio signal processing, machine learning for musi
 **Two Main Tasks:**
 
 1. **Task 1: Conditioned Symbolic Generation** (`symbolic_conditioned.ipynb`)
-   - **Dataset**: Nottingham ABC folk music dataset
+   - **Dataset**: Nottingham ABC folk music dataset (multi-instrument folk music)
    - **Approach**: REMI tokenization with Transformer architecture
    - **Features**:
      - Multi-instrument modeling (Melody, Chords, Bass)
@@ -153,7 +157,7 @@ The course covers fundamental audio signal processing, machine learning for musi
    - **Output**: `symbolic_conditioned.mid`
 
 2. **Task 2: Unconditioned Symbolic Generation** (`symbolic_unconditioned.ipynb`)
-   - **Dataset**: MIDI files from various sources
+   - **Dataset**: MIDI files from various sources (classical, jazz, pop)
    - **Approach**: Traditional ML with chord progression and melody extraction
    - **Features**:
      - Chord estimation from pitch classes
@@ -169,6 +173,10 @@ The course covers fundamental audio signal processing, machine learning for musi
 - **REMI Tokenization**: Structured MIDI representation
 - **PrettyMIDI**: MIDI file processing
 - **FluidSynth**: MIDI to audio conversion
+
+## 👩🏻‍💻 My Contributions
+
+The final project was a 4-person team effort; I led the symbolic conditioned generation and Transformer modeling.
 
 ---
 
