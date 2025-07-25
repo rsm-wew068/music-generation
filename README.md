@@ -147,6 +147,7 @@ The course covers fundamental audio signal processing, machine learning for musi
 1. **Task 1: Conditioned Symbolic Generation** (`symbolic_conditioned.ipynb`)
    - **Dataset**: Nottingham ABC folk music dataset (multi-instrument folk music)
    - **Approach**: REMI tokenization with Transformer architecture
+   - **Training Workflow**: The Transformer model was first trained on a small subset of the data as a baseline, then fine-tuned on the full dataset with more epochs, validation, learning rate scheduling, and gradient clipping. This fine-tuning improved musical structure and output quality.
    - **Features**:
      - Multi-instrument modeling (Melody, Chords, Bass)
      - REMI tokenization: Bar, Position, Track, Note/Chord tokens
@@ -159,6 +160,7 @@ The course covers fundamental audio signal processing, machine learning for musi
 2. **Task 2: Unconditioned Symbolic Generation** (`symbolic_unconditioned.ipynb`)
    - **Dataset**: MIDI files from various sources (classical, jazz, pop)
    - **Approach**: Traditional ML with chord progression and melody extraction
+   - **Training Workflow**: All models (Markov chain, RNN/LSTM) are trained from scratch on the dataset; no pre-trained models or fine-tuning are used in this task.
    - **Features**:
      - Chord estimation from pitch classes
      - Melody extraction (highest pitch per time segment)
