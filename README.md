@@ -144,37 +144,30 @@ The course covers fundamental audio signal processing, machine learning for musi
 
 **Two Main Tasks:**
 
-1. **Task 1: Conditioned Symbolic Generation** (`symbolic_conditioned.ipynb`)
-   - **Dataset**: Nottingham ABC folk music dataset (multi-instrument folk music)
-   - **Approach**: REMI tokenization with Transformer architecture
-   - **Training Workflow**: The Transformer model was first trained on a small subset of the data as a baseline, then fine-tuned on the full dataset with more epochs, validation, learning rate scheduling, and gradient clipping. This fine-tuning improved musical structure and output quality.
-   - **Features**:
-     - Multi-instrument modeling (Melody, Chords, Bass)
-     - REMI tokenization: Bar, Position, Track, Note/Chord tokens
-     - Data augmentation via transposition
-     - Expressive generation (duration, velocity, articulation)
-     - Structured composition: Intro → Climax → Resolution
-     - 1-minute generation with musical structure
-   - **Output**: `symbolic_conditioned.mid`
+1. **Task 1: Unconditioned Symbolic Generation** (`symbolic_unconditioned.ipynb`)
+We use the MAESTRO 2018 dataset, a collection of high-quality MIDI piano performances, to generate unconditioned symbolic music. The pipeline separates the harmony and melody generation to maintain musical structure:
+- **Chord Generation**: A 2nd-order Markov Chain is trained from scratch to generate plausible chord progressions. Chords are extracted per 1-second interval and represented as pitch classes.
+- **Melody Generation**: An LSTM-based RNN is trained to predict the next note in an 8-note melody sequence. Melodies are parsed from the highest pitch above C3 per segment.
+- **Model Training**: Both models are trained from scratch using the MAESTRO data — there is no fine-tuning or transfer learning involved.
+- **Evaluation**: Outputs are assessed based on temporal and harmonic alignment (4 melody notes per chord), melodic continuity, and structural coherence.
+- **MIDI Output**: Final sequences are merged into playable MIDI files using pretty_midi.
 
-2. **Task 2: Unconditioned Symbolic Generation** (`symbolic_unconditioned.ipynb`)
-   - **Dataset**: MIDI files from various sources (classical, jazz, pop)
-   - **Approach**: Traditional ML with chord progression and melody extraction
-   - **Training Workflow**: All models (Markov chain, RNN/LSTM) are trained from scratch on the dataset; no pre-trained models or fine-tuning are used in this task.
-   - **Features**:
-     - Chord estimation from pitch classes
-     - Melody extraction (highest pitch per time segment)
-     - RNN/LSTM-based sequence generation
-     - Time-step analysis (1-second segments)
-   - **Output**: `symbolic_unconditioned.mid`
-
-**Key Technologies:**
-- **Music21**: Music analysis and processing
-- **PyTorch**: Deep learning framework
-- **Transformers**: Attention-based models
-- **REMI Tokenization**: Structured MIDI representation
-- **PrettyMIDI**: MIDI file processing
-- **FluidSynth**: MIDI to audio conversion
+2. **Task 2: Conditioned Symbolic Generation** (`symbolic_conditioned.ipynb`)
+Using the Nottingham folk music corpus (in ABC format), we construct a symbolic generation pipeline that learns multi-instrument music (melody, chords, bass) using REMI tokenization and a Transformer decoder:
+- **Data Augmentation**: Sequences are transposed ±1 and ±2 semitones to expand the training set ~5×.
+- **REMI Tokenization**: Melody, chord, and bass lines are interleaved into structured REMI-style tokens (e.g., Bar_0, Position_3, Track_Melody, Note_C5, …).
+- **Training**:
+- Stage 1 (Baseline): The Transformer is trained on a small 2k-sample subset for 10 epochs.
+- Stage 2 (Fine-Tuning): The model is then fine-tuned on the full dataset with a validation split, learning rate scheduler, and gradient clipping over 30 epochs.
+- **Structured Generation**: Final music is generated in three sections: intro, climax (pitch-shifted +5, thinned), and resolution (pitch-shifted −4), forming a musical arc.
+- **Expressive Decoding**:
+- Trained MLP regressors predict:
+- Note duration
+- MIDI velocity (dynamics)
+- Articulation (legato/staccato)
+- Tempo (BPM per bar)
+- **Evaluation**: Evaluation was conducted qualitatively via structured music playback and validation loss monitoring. The model’s ability to generate coherent multi-instrumental music was assessed by enforcing structured phrases and expressive performance (duration, velocity, articulation, tempo). While we log validation loss during training, no quantitative or user-study-based evaluation was performed.
+- **Output**: The generated symbolic sequences are rendered into expressive, human-like MIDI and WAV files using music21 and fluidsynth.
 
 #### 👩🏻‍💻 My Contributions
 
