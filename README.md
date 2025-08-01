@@ -145,7 +145,7 @@ The course covers fundamental audio signal processing, machine learning for musi
 **Two Main Tasks:**
 
 1. **Task 1: Unconditioned Symbolic Generation** (`symbolic_unconditioned.ipynb`)
-  We use the MAESTRO 2018 dataset, a collection of high-quality MIDI piano performances, to generate unconditioned symbolic music. The pipeline separates the harmony and melody generation to maintain musical structure:
+We use the MAESTRO 2018 dataset, a collection of high-quality MIDI piano performances, to generate unconditioned symbolic music. The pipeline separates the harmony and melody generation to maintain musical structure:
   - **Chord Generation**: A 2nd-order Markov Chain is trained from scratch to generate plausible chord progressions. Chords are extracted per 1-second interval and represented as pitch classes.
   - **Melody Generation**: An LSTM-based RNN is trained to predict the next note in an 8-note melody sequence. Melodies are parsed from the highest pitch above C3 per segment.
   - **Model Training**: Both models are trained from scratch using the MAESTRO data — there is no fine-tuning or transfer learning involved.
@@ -153,7 +153,7 @@ The course covers fundamental audio signal processing, machine learning for musi
   - **MIDI Output**: Final sequences are merged into playable MIDI files using pretty_midi.
 
 2. **Task 2: Conditioned Symbolic Generation** (`symbolic_conditioned.ipynb`)
-  Using the Nottingham folk music corpus (in ABC format), we construct a symbolic generation pipeline that learns multi-instrument music (melody, chords, bass) using REMI tokenization and a Transformer decoder:
+Using the Nottingham folk music corpus (in ABC format), we construct a symbolic generation pipeline that learns multi-instrument music (melody, chords, bass) using REMI tokenization and a Transformer decoder:
   - **Data Augmentation**: Sequences are transposed ±1 and ±2 semitones to expand the training set ~5×.
   - **REMI Tokenization**: Melody, chord, and bass lines are interleaved into structured REMI-style tokens (e.g., Bar_0, Position_3, Track_Melody, Note_C5, …).
   - **Training**:
