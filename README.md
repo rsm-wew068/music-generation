@@ -159,15 +159,15 @@ The course covers fundamental audio signal processing, machine learning for musi
   - **Data Augmentation**: Sequences are transposed ±1 and ±2 semitones to expand the training set ~5×.
   - **REMI Tokenization**: Melody, chord, and bass lines are interleaved into structured REMI-style tokens (e.g., Bar_0, Position_3, Track_Melody, Note_C5, …).
   - **Training**:
-  - Stage 1 (Baseline): The Transformer is trained on a small 2k-sample subset for 10 epochs.
-  - Stage 2 (Fine-Tuning): The model is then fine-tuned on the full dataset with a validation split, learning rate scheduler, and gradient clipping over 30 epochs.
+    - Stage 1 (Baseline): The Transformer is trained on a small 2k-sample subset for 10 epochs.
+    - Stage 2 (Fine-Tuning): The model is then fine-tuned on the full dataset with a validation split, learning rate scheduler, and gradient clipping over 30 epochs.
   - **Structured Generation**: Final music is generated in three sections: intro, climax (pitch-shifted +5, thinned), and resolution (pitch-shifted −4), forming a musical arc.
   - **Expressive Decoding**:
-  - Trained MLP regressors predict:
-  - Note duration
-  - MIDI velocity (dynamics)
-  - Articulation (legato/staccato)
-  - Tempo (BPM per bar)
+    - Trained MLP regressors predict:
+    - Note duration
+    - MIDI velocity (dynamics)
+    - Articulation (legato/staccato)
+    - Tempo (BPM per bar)
   - **Evaluation**: Evaluation was conducted qualitatively via structured music playback and validation loss monitoring. The model’s ability to generate coherent multi-instrumental music was assessed by enforcing structured phrases and expressive performance (duration, velocity, articulation, tempo). While we log validation loss during training, no quantitative or user-study-based evaluation was performed.
   - **Output**: The generated symbolic sequences are rendered into expressive, human-like MIDI and WAV files using music21 and fluidsynth.
 
